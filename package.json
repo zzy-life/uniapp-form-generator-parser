@@ -1,6 +1,6 @@
 {
   "name": "uniapp-form-generator-parser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "uniapp的form-generator组件解析器",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zzy-life/uniapp-form-generator-parser.git"
+    "url": "git+https://gitee.com/time-doesnt-wait-for-me/uniapp-form-generator-parser.git"
   },
   "keywords": [
     "uniapp-form-generator-parser"
@@ -16,7 +16,7 @@
   "author": "ZhangZhiYu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zzy-life/uniapp-form-generator-parser/issues"
+    "url": "https://gitee.com/time-doesnt-wait-for-me/uniapp-form-generator-parser/issues"
   },
-  "homepage": "https://github.com/zzy-life/uniapp-form-generator-parser#readme"
+  "homepage": "https://gitee.com/time-doesnt-wait-for-me/uniapp-form-generator-parser"
 }

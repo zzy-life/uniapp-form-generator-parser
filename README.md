@@ -24,5 +24,5 @@ yarn add uniapp-form-generator-parser
 
 示例代码:
 
-> [src\components\parser\example\Index.vue](https://github.com/JakHuang/form-generator/blob/dev/src/components/parser/example/Index.vue)
+> [example/index.vue](https://gitee.com/time-doesnt-wait-for-me/uniapp-form-generator-parser/blob/master/example/index.vue)
 
