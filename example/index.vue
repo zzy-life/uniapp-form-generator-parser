@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import oFormParser from '../oFormParser';
+	import oFormParser from 'uniapp-form-generator-parser/oFormParser.vue';
 
 	export default {
 		data() {
