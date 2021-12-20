@@ -2,7 +2,6 @@
 	<view>
 
 		<oFormParser v-if="parserisnot" :formParserData="formParserData" @eventSubmit="onSubmit"></oFormParser>
-		<!-- <u-select v-model="show" mode="single-column" :list="list" @confirm="confirm"></u-select> -->
 	</view>
 </template>
 
@@ -12,16 +11,6 @@
 	export default {
 		data() {
 			return {
-				show: true,
-				list: [{
-						value: '1',
-						label: '江'
-					},
-					{
-						value: '2',
-						label: '湖'
-					}
-				],
 				// 表单json数据
 				formParserData: [],
 				parserisnot: false,
@@ -424,7 +413,7 @@
 						"__slot__": {
 							"list-type": true
 						},
-						"action": "/xyw/prod-api/common/upload",
+						"action": "http://www.zhangzhiyu.live:8900/xyw/prod-api/common/upload",
 						"disabled": false,
 						"accept": "",
 						"name": "file",
@@ -446,7 +435,7 @@
 
 				};
 				this.parserisnot = false
-				this.backfillFormData(jsonData);//回填图片
+				this.backfillFormData(jsonData);
 				this.formParserData = jsonData.fields;
 				console.log(this.formParserData)
 				this.$nextTick(function() {
@@ -496,7 +485,17 @@
 				uni.showToast({
 					title: '验证通过',
 				});
-				console.log('data:', data)
+				this.assignmentFormData(this.formParserData, data);
+				console.log('formParserData:', this.formParserData)
+			},
+			//表单内容赋值 给json中的defaultValue赋值
+			assignmentFormData(form, data) {
+				form.forEach((item) => {
+					const val = data[item.__vModel__];
+					if (val) {
+						item.__config__.defaultValue = val;
+					}
+				});
 			},
 
 		}

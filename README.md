@@ -93,6 +93,18 @@ if(Array.isArray(this.fieldValue)){//如果是数组，转成字符串型通过�
 
 备注： 如果报错误TypeError: Cannot read property 'model' of undefined 尝试修改组件oFormParser里面setTimeout 延迟时间加长。
 
+### 附件上传支持
+
+> 暂时仅支持微信小程序端
+
+在node_modules\uview-ui\components
+
+复制u-upload-enclosure文件夹
+
+列如
+
+![image-20211220154852639](image/image-20211220154852639.png)
+
 ### 鸣谢
 
 源代码作者[Mr.Liang](https://gitee.com/liang1022)

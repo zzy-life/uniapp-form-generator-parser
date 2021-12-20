@@ -79,10 +79,12 @@
 						name="file" @on-uploaded="onUploadComplete($event, index, item.keyName)"></u-upload>
 
 					<!-- 文件上传 -（未完成待定） -->
-					<u-button v-if="item.tag == 'upload-image' && item.type == 'file'" type="primary" size="mini">
-						<u-icon name="file-text" color="#fff" size="28"></u-icon>
-						<text style="margin-left:5rpx;">上传文件</text>
-					</u-button>
+					<u-upload-enclosure v-if="item.tag == 'upload-image' && item.type == 'file'"
+						ref="uploadEnclosureFiles" width="160" height="160" :action="item.action"
+						:file-list="item.fileList" :name="item.name" :auto-upload="item.autoUpload"
+						:max-size="item.maxSize * 1024 * 1024" :max-count="item.maxCount" name="file"
+						:preview-full-image="false"
+						@on-uploaded="onUploadCompleteEnclosure($event, index, item.keyName)"></u-upload-enclosure>
 
 
 				</u-form-item>
@@ -144,7 +146,6 @@
 
 		data() {
 			return {
-
 				// 表单数据
 				form: {},
 
@@ -563,13 +564,15 @@
 					if (item.progress == 100) {
 						if (item.hasOwnProperty("response")) {
 							let json = {
-								name: new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,10).replace("T"," ")+'日图片' + index + 1,
-								url: item.response.url,// 需要根据自己的回调修改
+								name: new Date(+new Date() + 8 * 3600 * 1000).toJSON().substr(0, 10).replace(
+									"T", " ") + '图片' + (index + 1),
+								url: item.response.url,
 							}
 							arr.push(json);
 						} else {
 							let json = {
-								name: new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,10).replace("T"," ")+'日图片' + index + 1,
+								name: new Date(+new Date() + 8 * 3600 * 1000).toJSON().substr(0, 10).replace(
+									"T", " ") + '图片' + (index + 1),
 								url: item.url,
 							}
 							arr.push(json);
@@ -581,8 +584,36 @@
 					this.$refs.uFormItem[index].validation(); // 验证单条form-item规则
 				}, 100)
 			},
-
+			//文件上传成功回调
+			onUploadCompleteEnclosure(lists, index, keyName) {
+				console.log('onUploaded', lists, 'keyName:', keyName);
+				let arr = [];
+				lists.forEach((item, index) => {
+					console.log('item', item)
+					if (item.progress == 100) {
+						if (item.hasOwnProperty("file")) {
+							let json = {
+								name: item.file.name,
+								url: item.response.url,
+							}
+							arr.push(json);
+						} else {
+							let json = {
+								name: new Date(+new Date() + 8 * 3600 * 1000).toJSON().substr(0, 10).replace(
+									"T", " ") + '文件' + (index + 1),
+								url: item.url,
+							}
+							arr.push(json);
+						}
+					}
+				})
+				this.form[keyName] = arr;
+				setTimeout(() => {
+					this.$refs.uFormItem[index].validation(); // 验证单条form-item规则
+				}, 100)
+			}
 			// 图片上传chnage事件
+			
 			// onUploadListChange(lists, index, keyName) {
 			// 	console.log('lists', lists, 'keyName:', keyName);
 			// 	let arr = [];
