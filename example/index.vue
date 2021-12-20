@@ -446,7 +446,7 @@
 
 				};
 				this.parserisnot = false
-				this.backfillFormData(jsonData);
+				this.backfillFormData(jsonData);//回填图片
 				this.formParserData = jsonData.fields;
 				console.log(this.formParserData)
 				this.$nextTick(function() {

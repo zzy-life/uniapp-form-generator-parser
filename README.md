@@ -68,9 +68,11 @@ this.emit('input', String(this.activeIndex))
 
 上传组件：u-upload 搜索 原来为：
 
- this.showToast('超出允许的文件大小');
+this.showToast('超出允许的文件大小');
 
- 修改为： this.showToast(`超出允许的文件大小${this.maxSize / 1024 /1024}M`);
+修改为： this.showToast(`超出允许的文件大小${this.maxSize / 1024 /1024}M`);
+
+
 
 表单组件：u-form-item搜索validation方法
 

@@ -564,7 +564,7 @@
 						if (item.hasOwnProperty("response")) {
 							let json = {
 								name: new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,10).replace("T"," ")+'日图片' + index + 1,
-								url: item.response.url,
+								url: item.response.url,// 需要根据自己的回调修改
 							}
 							arr.push(json);
 						} else {
