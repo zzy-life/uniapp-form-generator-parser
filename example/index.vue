@@ -1,7 +1,7 @@
 <template>
 	<view>
 
-		<o-form-parser v-if="parserisnot" :formParserData="formParserData" @eventSubmit="onSubmit"></o-form-parser>
+		<oFormParser v-if="parserisnot" :formParserData="formParserData" @eventSubmit="onSubmit"></oFormParser>
 		<!-- <u-select v-model="show" mode="single-column" :list="list" @confirm="confirm"></u-select> -->
 	</view>
 </template>
@@ -254,6 +254,7 @@
 		},
 		created() {
 			this.apiGetData();
+
 		},
 		methods: {
 			// 模拟请求接口返回数据
@@ -261,57 +262,26 @@
 				let jsonData = {
 					"fields": [{
 						"__config__": {
-							"label": "姓名",
+							"label": "账号",
 							"labelWidth": null,
 							"showLabel": true,
 							"changeTag": true,
 							"tag": "el-input",
 							"tagIcon": "input",
-							"required": true,
-							"layout": "colFormItem",
-							"span": 24,
-							"document": "https://element.eleme.cn/#/zh-CN/component/input",
-							"regList": [],
-							"formId": 100,
-							"renderKey": 1624354105602,
-						},
-						"__slot__": {
-							"prepend": "",
-							"append": ""
-						},
-						"placeholder": "请输入姓名",
-						"style": {
-							"width": "100%"
-						},
-						"clearable": true,
-						"prefix-icon": "",
-						"suffix-icon": "",
-						"maxlength": null,
-						"show-word-limit": false,
-						"readonly": false,
-						"disabled": false,
-						"__vModel__": "field100"
-					}, {
-						"__config__": {
-							"label": "姓名",
-							"labelWidth": null,
-							"showLabel": true,
-							"changeTag": true,
-							"tag": "el-input",
-							"tagIcon": "input",
+							"defaultValue": "79000",
 							"required": true,
 							"layout": "colFormItem",
 							"span": 24,
 							"document": "https://element.eleme.cn/#/zh-CN/component/input",
 							"regList": [],
 							"formId": 101,
-							"renderKey": 1624351505602,
+							"renderKey": "1011639670663972"
 						},
 						"__slot__": {
 							"prepend": "",
 							"append": ""
 						},
-						"placeholder": "请输入姓名",
+						"placeholder": "请输入账号",
 						"style": {
 							"width": "100%"
 						},
@@ -325,61 +295,26 @@
 						"__vModel__": "field101"
 					}, {
 						"__config__": {
-							"label": "电话号码",
-							"labelWidth": null,
-							"showLabel": true,
-							"changeTag": true,
-							"tag": "el-input",
-							"tagIcon": "input",
-							"required": true,
-							"layout": "colFormItem",
-							"span": 24,
-							"document": "https://element.eleme.cn/#/zh-CN/component/input",
-							"regList": [{
-								"pattern": "^[1][3,4,5,7,8][0-9]{9}$",
-								"message": "电话格式错误"
-							}],
-							"formId": 103,
-							"renderKey": 1624351523866
-						},
-						"__slot__": {
-							"prepend": "",
-							"append": ""
-						},
-						"placeholder": "请输入电话号码",
-						"style": {
-							"width": "100%"
-						},
-						"clearable": true,
-						"prefix-icon": "",
-						"suffix-icon": "",
-						"maxlength": null,
-						"show-word-limit": false,
-						"readonly": false,
-						"disabled": false,
-						"__vModel__": "field103"
-					}, {
-						"__config__": {
-							"label": "设置密码",
+							"label": "密码",
 							"showLabel": true,
 							"labelWidth": null,
 							"changeTag": true,
 							"tag": "el-input",
 							"tagIcon": "password",
-							"defaultValue": "",
+							"defaultValue": "123456",
 							"layout": "colFormItem",
 							"span": 24,
 							"required": true,
 							"regList": [],
 							"document": "https://element.eleme.cn/#/zh-CN/component/input",
-							"formId": 107,
-							"renderKey": 1624351785826
+							"formId": 102,
+							"renderKey": "1021639670664843"
 						},
 						"__slot__": {
 							"prepend": "",
 							"append": ""
 						},
-						"placeholder": "请输入设置密码",
+						"placeholder": "请输入密码",
 						"show-password": true,
 						"style": {
 							"width": "100%"
@@ -391,179 +326,10 @@
 						"show-word-limit": false,
 						"readonly": false,
 						"disabled": false,
-						"__vModel__": "field107"
-					}, {
-						"__config__": {
-							"label": "个人简介",
-							"labelWidth": null,
-							"showLabel": true,
-							"tag": "el-input",
-							"tagIcon": "textarea",
-							"required": false,
-							"layout": "colFormItem",
-							"span": 24,
-							"regList": [],
-							"changeTag": true,
-							"document": "https://element.eleme.cn/#/zh-CN/component/input",
-							"formId": 108,
-							"renderKey": 1624351814586
-						},
-						"type": "textarea",
-						"placeholder": "请输入个人简介",
-						"autosize": {
-							"minRows": 4,
-							"maxRows": 4
-						},
-						"style": {
-							"width": "100%"
-						},
-						"maxlength": null,
-						"show-word-limit": false,
-						"readonly": false,
-						"disabled": false,
-						"__vModel__": "field108"
+						"__vModel__": "field102"
 					}, {
 						"__config__": {
 							"label": "性别",
-							"labelWidth": null,
-							"showLabel": true,
-							"tag": "el-radio-group",
-							"tagIcon": "radio",
-							"changeTag": true,
-							"defaultValue": 1,
-							"layout": "colFormItem",
-							"span": 24,
-							"optionType": "default",
-							"regList": [],
-							"required": true,
-							"border": false,
-							"document": "https://element.eleme.cn/#/zh-CN/component/radio",
-							"formId": 104,
-							"renderKey": 1624351622011
-						},
-						"__slot__": {
-							"options": [{
-								"label": "男",
-								"value": 1
-							}, {
-								"label": "女",
-								"value": 2
-							}, {
-								"label": "未知",
-								"value": 3
-							}]
-						},
-						"style": {},
-						"size": "medium",
-						"disabled": false,
-						"__vModel__": "field104"
-					}, {
-						"__config__": {
-							"label": "出生年月",
-							"tag": "el-date-picker",
-							"tagIcon": "date",
-							"defaultValue": null,
-							"showLabel": true,
-							"labelWidth": null,
-							"span": 24,
-							"layout": "colFormItem",
-							"required": true,
-							"regList": [],
-							"changeTag": true,
-							"document": "https://element.eleme.cn/#/zh-CN/component/date-picker",
-							"formId": 105,
-							"renderKey": 1624351659418
-						},
-						"placeholder": "请选择出生年月",
-						"type": "date",
-						"style": {
-							"width": "100%"
-						},
-						"disabled": false,
-						"clearable": true,
-						"format": "yyyy-MM-dd",
-						"value-format": "yyyy-MM-dd",
-						"readonly": false,
-						"__vModel__": "field105"
-					}, {
-						"__config__": {
-							"label": "出生时间",
-							"tag": "el-time-picker",
-							"tagIcon": "time",
-							"defaultValue": null,
-							"span": 24,
-							"showLabel": true,
-							"layout": "colFormItem",
-							"labelWidth": null,
-							"required": true,
-							"regList": [],
-							"changeTag": true,
-							"document": "https://element.eleme.cn/#/zh-CN/component/time-picker",
-							"formId": 118,
-							"renderKey": 1624435591698
-						},
-						"placeholder": "请选择出生时间",
-						"style": {
-							"width": "100%"
-						},
-						"disabled": false,
-						"clearable": true,
-						"picker-options": {
-							"selectableRange": "00:00:00-23:59:59"
-						},
-						"format": "HH:mm:ss",
-						"value-format": "HH:mm:ss",
-						"__vModel__": "field118"
-					}, {
-						"__config__": {
-							"label": "反馈评价",
-							"tag": "el-rate",
-							"tagIcon": "rate",
-							"defaultValue": 0,
-							"span": 24,
-							"showLabel": true,
-							"labelWidth": null,
-							"layout": "colFormItem",
-							"required": true,
-							"regList": [],
-							"changeTag": true,
-							"document": "https://element.eleme.cn/#/zh-CN/component/rate",
-							"formId": 106,
-							"renderKey": 1624351729258
-						},
-						"style": {},
-						"max": 5,
-						"allow-half": false,
-						"show-text": false,
-						"show-score": false,
-						"disabled": false,
-						"__vModel__": "field106"
-					}, {
-						"__config__": {
-							"label": "户口人数",
-							"showLabel": true,
-							"changeTag": true,
-							"labelWidth": null,
-							"tag": "el-input-number",
-							"tagIcon": "number",
-							"defaultValue": 1,
-							"span": 24,
-							"layout": "colFormItem",
-							"required": true,
-							"regList": [],
-							"document": "https://element.eleme.cn/#/zh-CN/component/input-number",
-							"formId": 110,
-							"renderKey": 1624351921259
-						},
-						"placeholder": "户口人数",
-						"step": 1,
-						"step-strictly": false,
-						"controls-position": "",
-						"disabled": false,
-						"__vModel__": "field110",
-					}, {
-						"__config__": {
-							"label": "下拉选择",
 							"showLabel": true,
 							"labelWidth": null,
 							"tag": "el-select",
@@ -574,19 +340,20 @@
 							"regList": [],
 							"changeTag": true,
 							"document": "https://element.eleme.cn/#/zh-CN/component/select",
-							"formId": 158,
-							"renderKey": "1011638952074933"
+							"formId": 103,
+							"renderKey": "1031639670684974",
+							"defaultValue": 1
 						},
 						"__slot__": {
 							"options": [{
-								"label": "选项一",
+								"label": "男",
 								"value": 1
 							}, {
-								"label": "选项二",
+								"label": "女",
 								"value": 2
 							}]
 						},
-						"placeholder": "请选择下拉选择",
+						"placeholder": "请选择性别",
 						"style": {
 							"width": "100%"
 						},
@@ -594,150 +361,17 @@
 						"disabled": false,
 						"filterable": false,
 						"multiple": false,
-						"__vModel__": "field158"
+						"__vModel__": "field103"
 					}, {
 						"__config__": {
-							"label": "户口地址",
-							"url": "https://www.fastmock.site/mock/f8d7a54fb1e60561e2f720d5a810009d/fg/cascaderList",
-							"method": "get",
-							"dataKey": "list",
-							"showLabel": true,
-							"labelWidth": null,
-							"tag": "el-cascader",
-							"tagIcon": "cascader",
-							"layout": "colFormItem",
-							"defaultValue": [],
-							"dataType": "static",
-							"span": 24,
-							"required": true,
-							"regList": [],
-							"changeTag": true,
-							"document": "https://element.eleme.cn/#/zh-CN/component/cascader",
-							"formId": 115,
-							"renderKey": 1624429110816
-						},
-						"options": [{
-							"label": "四川省",
-							"value": 1,
-							"id": 103,
-							"children": [{
-								"label": "成都市",
-								"value": 2,
-								"id": 104
-							}, {
-								"label": "遂宁市",
-								"value": 3,
-								"id": 105
-							}]
-						}, {
-							"label": "广东省",
-							"value": 4,
-							"id": 106,
-							"children": [{
-								"label": "深圳市",
-								"value": 5,
-								"id": 107
-							}, {
-								"label": "珠海市",
-								"value": 6,
-								"id": 108
-							}]
-						}],
-						"placeholder": "请选择户口地址",
-						"style": {
-							"width": "100%"
-						},
-						"props": {
-							"props": {
-								"multiple": false,
-								"label": "label",
-								"value": "value",
-								"children": "children"
-							}
-						},
-						"show-all-levels": true,
-						"disabled": false,
-						"clearable": true,
-						"filterable": false,
-						"separator": "/",
-						"__vModel__": "field115"
-					}, {
-						"__config__": {
-							"label": "兴趣爱好",
-							"tag": "el-checkbox-group",
-							"tagIcon": "checkbox",
-							"defaultValue": [],
-							"span": 24,
-							"showLabel": true,
-							"labelWidth": null,
-							"layout": "colFormItem",
-							"optionType": "default",
-							"required": true,
-							"regList": [],
-							"changeTag": true,
-							"border": false,
-							"document": "https://element.eleme.cn/#/zh-CN/component/checkbox",
-							"formId": 112,
-							"renderKey": 1624352073387
-						},
-						"__slot__": {
-							"options": [{
-								"label": "编程",
-								"value": 1
-							}, {
-								"label": "旅行",
-								"value": 2
-							}, {
-								"label": "电影",
-								"value": 3
-							}, {
-								"label": "音乐",
-								"value": 4
-							}, {
-								"label": "游戏",
-								"value": 5
-							}, {
-								"label": "运动",
-								"value": 6
-							}]
-						},
-						"style": {},
-						"size": "medium",
-						"disabled": false,
-						"__vModel__": "field112"
-					}, {
-						"__config__": {
-							"label": "是否买房",
-							"tag": "el-switch",
-							"tagIcon": "switch",
-							"defaultValue": false,
-							"span": 24,
-							"showLabel": true,
-							"labelWidth": null,
-							"layout": "colFormItem",
-							"required": true,
-							"regList": [],
-							"changeTag": true,
-							"document": "https://element.eleme.cn/#/zh-CN/component/switch",
-							"formId": 113,
-							"renderKey": 1624352180804
-						},
-						"style": {},
-						"disabled": false,
-						"active-text": "",
-						"inactive-text": "",
-						"active-color": null,
-						"inactive-color": null,
-						"active-value": true,
-						"inactive-value": false,
-						"__vModel__": "field113"
-					}, {
-						"__config__": {
-							"label": "上传身份证",
+							"label": "图片上传",
 							"tag": "el-upload",
 							"tagIcon": "upload",
 							"layout": "colFormItem",
-							"defaultValue": null,
+							"defaultValue": [{
+								"name": "erciyuan.jpg",
+								"url": "http://www.zhangzhiyu.live:8088/xyw/profile/upload/2021/12/17/6fb64b87-547c-48ed-968e-dd0165f609a4.jpg"
+							}],
 							"showLabel": true,
 							"labelWidth": null,
 							"required": true,
@@ -749,20 +383,55 @@
 							"fileSize": 2,
 							"sizeUnit": "MB",
 							"document": "https://element.eleme.cn/#/zh-CN/component/upload",
-							"formId": 114,
-							"renderKey": 1624352275010
+							"formId": 104,
+							"renderKey": "1041639670702247"
 						},
 						"__slot__": {
 							"list-type": true
 						},
-						"action": "https://jsonplaceholder.typicode.com/posts/",
+						"action": "http://www.zhangzhiyu.live:8900/xyw/prod-api/common/upload",
 						"disabled": false,
 						"accept": "",
 						"name": "file",
 						"auto-upload": true,
-						"list-type": "picture-card",
+						"list-type": "picture",
 						"multiple": false,
-						"__vModel__": "field114"
+						"__vModel__": "field104"
+					}, {
+						"__config__": {
+							"label": "附件上传",
+							"tag": "el-upload",
+							"tagIcon": "upload",
+							"layout": "colFormItem",
+							"defaultValue": [{
+								"name": "环保题库.xlsx",
+								"url": "http://www.zhangzhiyu.live:8088/xyw/profile/upload/2021/12/17/e48bc10b-a93d-4cb6-868b-f86c03e4297c.xlsx"
+							}],
+							"showLabel": true,
+							"labelWidth": null,
+							"required": true,
+							"span": 24,
+							"showTip": false,
+							"buttonText": "点击上传",
+							"regList": [],
+							"changeTag": true,
+							"fileSize": 2,
+							"sizeUnit": "MB",
+							"document": "https://element.eleme.cn/#/zh-CN/component/upload",
+							"formId": 105,
+							"renderKey": "1051639670714315"
+						},
+						"__slot__": {
+							"list-type": true
+						},
+						"action": "/xyw/prod-api/common/upload",
+						"disabled": false,
+						"accept": "",
+						"name": "file",
+						"auto-upload": true,
+						"list-type": "text",
+						"multiple": false,
+						"__vModel__": "field105"
 					}],
 					"formRef": "elForm",
 					"formModel": "formData",
@@ -774,11 +443,50 @@
 					"disabled": false,
 					"span": 24,
 					"formBtns": true
+
 				};
 				this.parserisnot = false
+				this.backfillFormData(jsonData);
 				this.formParserData = jsonData.fields;
+				console.log(this.formParserData)
 				this.$nextTick(function() {
 					this.parserisnot = true
+				});
+			},
+			//回填图片
+			backfillFormData(form) {
+				form.fields.forEach((item) => {
+					if (item.__config__.tag == "el-upload") {
+						//如果是图片
+						const val = item.__config__.defaultValue; //拿出值
+						if (val == null) {
+							//如果等于null直接跳出
+							return;
+						}
+						if (item.hasOwnProperty("fileList")) {
+							//如果没有这个key
+							item["fileList"].splice(0, item["fileList"].length); //清空回显
+						}
+						for (let index = 0; index < val.length; index++) {
+							//循环值
+							if (!item.hasOwnProperty("fileList")) {
+								//如果没有这个key
+								item["fileList"] = [
+									//直接定义一个数组并赋值
+									{
+										name: val[index].name,
+										url: val[index].url,
+									},
+								];
+							} else {
+								item["fileList"].push({
+									//追加进去
+									name: val[index].name,
+									url: val[index].url,
+								});
+							}
+						}
+					}
 				});
 			},
 

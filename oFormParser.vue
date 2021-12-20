@@ -74,10 +74,9 @@
 
 					<!-- 图片上传 -->
 					<u-upload v-if="item.tag == 'upload-image' && item.type == 'image'" ref="uploadFiles" width="160"
-						height="160" :action="item.action" :name="item.name" :auto-upload="item.autoUpload"
-						:max-size="item.maxSize * 1024 * 1024" :max-count="item.maxCount" name="file"
-						@on-list-change="onUploadListChange($event, index, item.keyName)"
-						@on-uploaded="onUploadComplete($event, index, item.keyName)"></u-upload>
+						height="160" :action="item.action" :file-list="item.fileList" :name="item.name"
+						:auto-upload="item.autoUpload" :max-size="item.maxSize * 1024 * 1024" :max-count="item.maxCount"
+						name="file" @on-uploaded="onUploadComplete($event, index, item.keyName)"></u-upload>
 
 					<!-- 文件上传 -（未完成待定） -->
 					<u-button v-if="item.tag == 'upload-image' && item.type == 'file'" type="primary" size="mini">
@@ -136,8 +135,9 @@
 		computed: {
 			// 数据转换 可用数据normalizedSize
 			normalizedSize() {
-				
+
 				console.log('computed')
+				console.log(this.convertData(this.formParserData))
 				return this.convertData(this.formParserData);
 			}
 		},
@@ -205,7 +205,6 @@
 					function keep(arr) {
 						val.forEach((item, index) => {
 							let arr2 = arr.filter(itemtwo => itemtwo.value == item);
-							debugger
 							if (arr2.length) {
 								index == 0 ? label += `${arr2[0].label}` : label += `/${arr2[0].label}`;
 								if (arr2[0].children) {
@@ -291,12 +290,14 @@
 					// 上传组件单upload单独处理
 					if (tag == 'el-upload') {
 						objData = {
+							value: item.__config__.defaultValue,
 							action: item.action,
 							multiple: item.multiple,
 							maxSize: item.__config__.fileSize,
 							maxCount: 3,
 							autoUpload: item['auto-upload'],
 							name: item.name,
+							fileList: item.fileList
 						}
 						if (item['list-type'] == 'picture-card') {
 							obj.type = 'image';
@@ -398,7 +399,7 @@
 
 			// 表单提交
 			submit() {
-				console.log('form:', this.form)
+				console.log('form', this.form)
 				this.$refs.uForm.validate(valid => {
 					if (valid) {
 						this.$emit('eventSubmit', this.form);
@@ -557,31 +558,58 @@
 			onUploadComplete(lists, index, keyName) {
 				console.log('onUploaded', lists, 'keyName:', keyName);
 				let arr = [];
-				lists.forEach(item => {
+				lists.forEach((item, index) => {
+					console.log('item', item)
 					if (item.progress == 100) {
-						arr.push(`http://url_${item.response.id}`);
+						if (item.hasOwnProperty("response")) {
+							let json = {
+								name: new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,10).replace("T"," ")+'日图片' + index + 1,
+								url: item.response.url,
+							}
+							arr.push(json);
+						} else {
+							let json = {
+								name: new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,10).replace("T"," ")+'日图片' + index + 1,
+								url: item.url,
+							}
+							arr.push(json);
+						}
 					}
 				})
-				this.form[keyName] = arr.join(',');
+				this.form[keyName] = arr;
 				setTimeout(() => {
 					this.$refs.uFormItem[index].validation(); // 验证单条form-item规则
 				}, 100)
 			},
 
 			// 图片上传chnage事件
-			onUploadListChange(lists, index, keyName) {
-				console.log('lists', lists, 'keyName:', keyName);
-				let arr = [];
-				lists.forEach(item => {
-					if (item.progress == 100) {
-						arr.push(`http://url_${item.response.id}`);
-					}
-				})
-				this.form[keyName] = arr.join(',');
-				setTimeout(() => {
-					this.$refs.uFormItem[index].validation(); // 验证单条form-item规则
-				}, 100)
-			},
+			// onUploadListChange(lists, index, keyName) {
+			// 	console.log('lists', lists, 'keyName:', keyName);
+			// 	let arr = [];
+			// 	lists.forEach(item => {
+			// 		if (item.progress == 100) {
+			// 			if (item.hasOwnProperty("response")) {
+			// 				let json = {
+			// 					name: item.response.url,
+			// 					url: item.response.url,
+			// 				}
+			// 				arr.push(json);
+			// 			} else {
+			// 				let json = {
+			// 					name: item.url,
+			// 					url: item.url,
+			// 				}
+			// 				arr.push(json);
+			// 			}
+			// 		}
+			// 	})
+			// 	this.form[keyName] = arr;
+			// 	console.log(this.form[keyName])
+			// 	setTimeout(() => {
+			// 		this.$refs.uFormItem[index].validation(); // 验证单条form-item规则
+			// 	}, 100)
+			// },
+
 
 
 		}

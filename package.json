@@ -1,6 +1,6 @@
 {
   "name": "uniapp-form-generator-parser",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "uniapp的form-generator组件解析器",
   "main": "index.js",
   "scripts": {
